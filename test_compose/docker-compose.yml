@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  backend:
+    image: backend #nombre de la imagen
+    build:
+      context: ./backend #donde esta la carpeta con el dockerfile
+      dockerfile: Dockerfile 
+    ports:
+      - 5000:5000
+  frontend:
+    image: frontend # nombre de la imagen
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    depends_on: # depende del backend
+      - backend
